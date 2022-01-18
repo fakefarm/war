@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 ruby '3.0.2'
 
@@ -11,6 +11,10 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
+
+gem 'hashie'
+gem 'faraday', '1.9.3'
+gem 'faraday_middleware'
 
 group :development, :test do
   gem 'dotenv-rails', '2.7.6'
@@ -33,4 +37,6 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'database_cleaner-active_record'
+  gem 'webmock'
 end
+
