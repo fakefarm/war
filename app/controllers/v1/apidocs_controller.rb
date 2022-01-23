@@ -16,7 +16,7 @@ module V1
           key :name, 'MIT'
         end
       end
-      key :host, 'combat.fakefarm.com'
+      key :host, 'http://war.fakefarm.com'
       key :basePath, '/v1/combat'
       key :produces, ['application/json']
     end
