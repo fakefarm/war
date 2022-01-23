@@ -4,7 +4,7 @@ describe Marvel::Client do
   let(:client) { marvel_test_client }
 
   context 'Character endpoints' do
-    let(:id) { 1009652 }
+    let(:id) { 1_009_652 }
 
     describe '#characters' do
       before do

@@ -24,8 +24,8 @@ describe Marvel::Response::Error do
     describe 'with a limit parameter greater than 100' do
       before do
         stub_get('characters', limit: 101,
-                 response_code: 409,
-                 returns: 'errors/limit_over_100.json')
+                               response_code: 409,
+                               returns: 'errors/limit_over_100.json')
       end
 
       it 'returns a 409 error' do
@@ -42,8 +42,8 @@ describe Marvel::Response::Error do
     describe 'with an invalid limit or less than 1' do
       before do
         stub_get('characters', limit: 0,
-                 response_code: 409,
-                 returns: 'errors/limit_invalid.json')
+                               response_code: 409,
+                               returns: 'errors/limit_invalid.json')
       end
 
       it 'returns a 409 error' do
@@ -60,8 +60,8 @@ describe Marvel::Response::Error do
     describe 'with an invalid paramter' do
       before do
         stub_get('characters', invalid_param: 1,
-                 response_code: 409,
-                 returns: 'errors/invalid_parameter.json')
+                               response_code: 409,
+                               returns: 'errors/invalid_parameter.json')
       end
 
       it 'returns a 409 error' do
@@ -78,8 +78,8 @@ describe Marvel::Response::Error do
     describe 'with an empty parameter' do
       before do
         stub_get('characters', name: '',
-                 response_code: 409,
-                 returns: 'errors/empty_parameter.json')
+                               response_code: 409,
+                               returns: 'errors/empty_parameter.json')
       end
 
       it 'returns a 409 error' do
@@ -96,8 +96,8 @@ describe Marvel::Response::Error do
     describe 'with an invalid ordering parameter' do
       before do
         stub_get('characters', orderBy: 'goofiness',
-                 response_code: 409,
-                 returns: 'errors/invalid_ordering.json')
+                               response_code: 409,
+                               returns: 'errors/invalid_ordering.json')
       end
 
       it 'returns a 409 error' do
@@ -113,18 +113,18 @@ describe Marvel::Response::Error do
 
     describe 'with too many values sent to a multi-value list filter' do
       before do
-        stub_get('characters', comics: [*1..11] * ',',
-                 response_code: 409,
-                 returns: 'errors/excessive_filter_values.json')
+        stub_get('characters', comics: [*1..11].join(','),
+                               response_code: 409,
+                               returns: 'errors/excessive_filter_values.json')
       end
 
       it 'returns a 409 error' do
-        expect(client.characters(comics: [*1..11] * ',').to_s)
+        expect(client.characters(comics: [*1..11].join(',')).to_s)
           .to eq '409 You may not submit more than 10 issue ids.'
       end
 
       it 'returns a Marvel::Response::Error' do
-        expect(client.characters(comics: [*1..11] * ','))
+        expect(client.characters(comics: [*1..11].join(',')))
           .to be_a Marvel::Response::Error
       end
     end
@@ -132,8 +132,8 @@ describe Marvel::Response::Error do
     describe 'with an invalid filter value' do
       before do
         stub_get('characters', comics: 'one',
-                 response_code: 409,
-                 returns: 'errors/invalid_filter_value.json')
+                               response_code: 409,
+                               returns: 'errors/invalid_filter_value.json')
       end
 
       it 'returns a 409 error' do
@@ -149,7 +149,7 @@ describe Marvel::Response::Error do
     end
 
     context 'with an Etag' do
-      let(:id) { 1009652 }
+      let(:id) { 1_009_652 }
 
       describe 'that is valid and up-to-date' do
         let(:etag) { 'd3f102f7c8d0ef375f395733ae2ce06d1899a94f' }
@@ -167,7 +167,7 @@ describe Marvel::Response::Error do
         end
 
         it 'returns a Marvel::Response::Error' do
-          expect(client.character(1009652, etag: etag))
+          expect(client.character(1_009_652, etag: etag))
             .to be_a Marvel::Response::Error
         end
       end

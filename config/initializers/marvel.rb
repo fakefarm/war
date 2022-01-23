@@ -5,4 +5,4 @@ Rails.application.reloader.to_prepare do
       config.private_key = Rails.application.credentials.marvel[:private]
     end
   end
- end
+end

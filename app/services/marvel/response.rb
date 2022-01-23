@@ -1,7 +1,11 @@
 module Marvel
   module Response
     def self.create(response_hash)
-      results = response_hash.data.results.dup rescue response_hash
+      results = begin
+        response_hash.data.results.dup
+      rescue StandardError
+        response_hash
+      end
       results.extend(self)
       results.instance_exec do
         @code   = response_hash.code

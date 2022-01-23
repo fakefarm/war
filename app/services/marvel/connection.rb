@@ -1,11 +1,10 @@
 module Marvel
   module Connection
-
     BASE_API_URL = 'https://gateway.marvel.com/v1/public/'
     HEADERS = {
-                accept: 'application/json',
-                user_agent: "Character War API"
-              }
+      accept: 'application/json',
+      user_agent: 'Character War API'
+    }
 
     private
 

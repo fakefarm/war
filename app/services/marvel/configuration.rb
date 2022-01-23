@@ -1,6 +1,5 @@
 module Marvel
   module Configuration
-
     attr_accessor :api_key, :private_key
 
     def configure

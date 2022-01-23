@@ -21,8 +21,9 @@ module Marvel
       case response.status
       when 200 then Marvel::Response.create(response.body)
       when 304 then Marvel::Response::Error.new(
-                      { 'code' => 304, 'status' => 'Not Modified' })
-      else          Marvel::Response::Error.new(response.body)
+        { 'code' => 304, 'status' => 'Not Modified' }
+      )
+      else Marvel::Response::Error.new(response.body)
       end
     end
 
