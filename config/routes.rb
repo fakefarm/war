@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     get 'combat', to: 'combat#index'
     resources :apidocs, only: [:index]
   end
+
+  root to: 'v1/apidocs#index'
 end
