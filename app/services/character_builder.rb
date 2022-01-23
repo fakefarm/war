@@ -1,5 +1,4 @@
 class CharacterBuilder
-
   SPARE_VILLIANS = %w[Magneto]
 
   def self.find(params)
@@ -33,11 +32,11 @@ class CharacterBuilder
 
   def get_from_universe
     @get ||= case @params['universe']
-    when 'marvel'
-      get_marvel_character
-    else
-      []
-    end
+             when 'marvel'
+               get_marvel_character
+             else
+               []
+             end
   end
 
   def get_marvel_character
@@ -95,7 +94,7 @@ class CharacterBuilder
     @payload.errors = "Looks like #{player} is a typo!. #{did_you_mean}"
   end
 
-   def not_found_error
+  def not_found_error
     message = "#{player} not found in #{@params['universe']} universe."
     @payload.errors = message
   end
@@ -133,5 +132,4 @@ class CharacterBuilder
   def errors
     @payload.errors
   end
-
 end
