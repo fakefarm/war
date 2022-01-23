@@ -1,0 +1,15 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2014 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2014 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2014 MARVEL</a>",
+  "etag": "d3f102f7c8d0ef375f395733ae2ce06d1899a94f",
+  "data": {
+    "offset": 0,
+    "limit": 20,
+    "total": 0,
+    "count": 0,
+    "results": []
+  }
+}
