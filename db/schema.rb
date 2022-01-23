@@ -10,21 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_212207) do
-
+ActiveRecord::Schema.define(version: 20_220_119_155_051) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "characters", force: :cascade do |t|
-    t.string "hero"
-    t.string "legal_name"
-    t.string "description"
-    t.integer "universe_id"
-    t.string "universe"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["hero"], name: "index_characters_on_hero"
-    t.index ["legal_name"], name: "index_characters_on_legal_name"
+  create_table 'characters', force: :cascade do |t|
+    t.string 'hero'
+    t.string 'legal_name'
+    t.string 'description'
+    t.integer 'universe_id'
+    t.string 'universe'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['hero'], name: 'index_characters_on_hero'
+    t.index ['legal_name'], name: 'index_characters_on_legal_name'
   end
 
+  create_table 'combats', force: :cascade do |t|
+    t.integer 'seed_number'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'players', force: :cascade do |t|
+    t.bigint 'character_id', null: false
+    t.bigint 'combat_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['character_id'], name: 'index_players_on_character_id'
+    t.index ['combat_id'], name: 'index_players_on_combat_id'
+  end
+
+  add_foreign_key 'players', 'characters'
+  add_foreign_key 'players', 'combats'
 end
